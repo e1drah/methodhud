@@ -8,63 +8,231 @@ namespace methodhud
 {
     internal class Program
     {
+        //Varible set up
+
+        //Player stats
+        static int health;
+        static int score;
+        static int lives;
+        static int attackPower;
+        static int enemykilled;
+        static int playerExperience;
+        static int playerLevel;
+        static int neededExperience;
+        static int scoreModifier;
+
+        static string playerName;
+
+        //monster stats
+        static int monsterKillPoints;
+        static int monsterPower;
+        static int monsterHealth;
+        static int monsterExperience;
         static void Main(string[] args)
         {
-            //Varible set up
+
+            //Initialization
+
             //Player stats
-            int health = 100;
-            int score = 0;
-            int lives = 3;
-            int attackPower = 25;
-            int enemykilled = 0;
+            health = 100;
+            score = 0;
+            lives = 5;
+            attackPower = 10;
+            enemykilled = 0;
+            playerExperience = 0;
+            playerLevel = 1;
+            neededExperience = 100;
+            scoreModifier = 1;
+            enemykilled = 0;
 
-            string playerName = "sam";
-            //monster stats
-            int monsterKillPoints = 50;
-            int monsterPower = 10;
-            int monsterHealth = 50;
-            int monsterExperiance = 50;
+            //Monster stats
+            monsterKillPoints = 50;
+            monsterPower = 10;
+            monsterHealth = 50;
+            monsterExperience = 50;
 
-            //HudTop(playerName,score,health,lives,enemykilled);
-           
+            //Name your guy
+            Console.WriteLine("What's your name");
+            playerName = Console.ReadLine();
+            Console.Clear();
+
+            ManFindsMonster();
+            Console.ReadKey();
+            Console.Clear();
+
+            ManAndMonsterFight();
+            Console.ReadKey();
+            Console.Clear();
+
+            ManAndMonsterFight();
+            Console.ReadKey();
+            Console.Clear();
+
+            ManAndMonsterFight();
+            Console.ReadKey();
+            Console.Clear();
+
+            ManAndMonsterFight();
+            Console.ReadKey();
+            Console.Clear();
+
+            ManAndMonsterFight();
+            Console.ReadKey();
+            Console.Clear();
+
+            ManKillMonster();
+            Console.ReadKey();
+            Console.Clear();
+
+            ManFindsMonster();
+            Console.ReadKey();
+            Console.Clear();
+
+            ManAndMonsterFight();
+            Console.ReadKey();
+            Console.Clear();
+
+            ManAndMonsterFight();
+            Console.ReadKey();
+            Console.Clear();
+
+            ManAndMonsterFight();
+            Console.ReadKey();
+            Console.Clear();
+
+            ManAndMonsterFight();
+            Console.ReadKey();
+            Console.Clear();
+
+            ManAndMonsterFight();
+            Console.ReadKey();
+            Console.Clear();
+
+            ManKillMonster();
+            Console.ReadKey();
+            Console.Clear();
+
+            TheEnd();
+            Console.ReadKey();
         }
-        //player stats
-        static void HudTop(string playerNameA, int scoreA,int healthA, int livesA, int enemykilledA)
+        //Top HUD
+        static void HudTop()
         {
-            Console.WriteLine(playerNameA + " Score: " + scoreA +" health: " + healthA + " Lives: " + livesA + " Enemys killed: " + enemykilledA);
+            Console.WriteLine(playerName + ": " + "Score: "+ score +" health: " + health + " Lives: " + lives + " Level: " + playerLevel + " Exp: " + playerExperience + "/" + neededExperience + " Enemys killed: " + enemykilled);
         }
+
         //"Game screens"
+
         // Man no monster
-        static void manNoMonster()
-        {
-            Console.WriteLine("");
-            Console.WriteLine(@" 0 |");
-            Console.WriteLine(@"/|\T");
-            Console.WriteLine(@"/7");
-        }
+        static void ManNoMonster()
+            {
+                Console.WriteLine("");
+                Console.WriteLine(@" 0 |");
+                Console.WriteLine(@"/|\T");
+                Console.WriteLine(@"/ 7");
+            }
         // Man with monster
-        static void manWithMonster()
-        {
-            Console.WriteLine(@"     " + @" ^{_}");
-            Console.WriteLine(@" 0 | " + @" T[ ]");
-            Console.WriteLine(@"/|\T " + @" || |");
-            Console.WriteLine(@"/7   " + @" |d d");
-        }
+        static void ManWithMonster()
+            {
+                Console.WriteLine(@"     " + @" ^{_}");
+                Console.WriteLine(@" 0 | " + @" T[ ]");
+                Console.WriteLine(@"/|\T " + @" || |");
+                Console.WriteLine(@"/ 7  " + @" |d d");
+            }
         // No man no monster
-        static void noManNoMonster()
-        {
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-        }
+        static void NoManNoMonster()
+            {
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
+            }
         //noManWithMonster
-        static void noManWithMonster()
+        static void NoManWithMonster()
+            {
+                Console.WriteLine(@"     " + @" ^{_}");
+                Console.WriteLine(@"     " + @" T[ ]");
+                Console.WriteLine(@"     " + @" || |");
+                Console.WriteLine(@"     " + @" |d d");
+            }
+        //The end
+        static void TheEnd()
         {
-            Console.WriteLine(@"     " + @" ^{_}");
-            Console.WriteLine(@"     " + @" T[ ]");
-            Console.WriteLine(@"     " + @" || |");
-            Console.WriteLine(@"     " + @" |d d");
+            Console.WriteLine(@" _____ _   _  _____   _____ _   _______ ");
+            Console.WriteLine(@"|_   _| | | ||  ___| |  ___| \ | |  _  \");
+            Console.WriteLine(@"  | | | |_| || |__   | |__ |  \| | | | |");
+            Console.WriteLine(@"  | | |  _  ||  __|  |  __|| . ` | | | |");
+            Console.WriteLine(@"  | | | | | || |___  | |___| |\  | |/ / ");
+            Console.WriteLine(@"  \_/ \_| |_/\____/  \____/\_| \_/___/  ");
         }
+        //scenarios
+        static void ManFindsMonster()
+        {
+            HudTop();
+            ManWithMonster();
+            Console.WriteLine(playerName + " finds a monster");
+        }
+        static void ManAndMonsterFight()
+
+        {
+            HudTop();
+            ManWithMonster();
+            PlayerDamageCal();
+            MonsterDamageCal();
+        }
+        static void ManKillMonster()
+        {
+            ExperianceCal();
+            HudTop();
+            ManNoMonster();
+            Console.WriteLine("The monster is dead");
+        }
+        //Calculators
+        //Experiance
+        static void ExperianceCal()
+        {
+            playerExperience += monsterExperience;
+            if (playerExperience >= neededExperience)
+            {
+                //resets EXP count
+                playerExperience -= 100;
+                //Increases player lvl
+                playerLevel += 1;
+
+            }
+        }
+        //Player takes damage
+        static void PlayerDamageCal()
+        {
+            Console.WriteLine("The monster Attacks " + playerName + "!");
+            health -= monsterPower;
+            //Monster kills player
+            if (health <= 0)
+            {
+                //takes away a life resets health
+                lives -= 1;
+                health = 100;
+            }
+        }
+        //Monster takes damage
+        static void MonsterDamageCal()
+        {
+            Console.WriteLine(playerName + " attacks the monster!");
+            monsterHealth -= attackPower;
+            //player kills the monster
+            if (monsterHealth <= 0)
+            {
+                monsterHealth = 50;
+                Scorecal();
+                enemykilled += 1;
+                scoreModifier += 1;
+            }
+        }
+        // Player gets points
+        static void Scorecal()
+        {
+            score += monsterKillPoints * scoreModifier;
+        }
+        
     }
 }
